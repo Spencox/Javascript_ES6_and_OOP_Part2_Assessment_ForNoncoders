@@ -1,0 +1,1 @@
+# Javascript_ES6_and_OOP_Part2_Assessment_ForNoncoders
