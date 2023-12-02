@@ -33,23 +33,40 @@ function createClubCardHTML(club) {
 
 // Handle clicking on a football club card
 function handleClubClick(element) {
-    // Write your code here for task1
+    // TODO: Write your code here for task1
+    const clickedClubCard = element;
+    if (clickedClubCard) {
         // Get the name of the clicked club
-        
+        const clubName = clickedClubCard.querySelector('h2').textContent;
+        console.log(clubName);
         // Find the selected club by its name
-              
+        const clickedClubData = footballClubs.find(club => club.name === clubName)
+        console.log(clickedClubData)  
         // Display details of the selected club
-            
-    }
-
+        if (clickedClubData) {
+            displayClubDetails(clickedClubData)
+        }
+    }          
+}
 
 // Display football club details
 function displayClubDetails(club) {
-    // Write your code here for task2
-        // Create a club details HTML using template strings
-    
+    // TODO: Write your code here for task2
+    // Create a club details HTML using template strings
+    const focusedClubCard = 
+`
+<div id="club-details" onclick="handleClubClick(this);">
+    <button onclick="viewClubPlayers('${club.name}'); event.stopPropagation();" style="width:100%;">Back</button>
+    <h2>${club.name}</h2>
+    <img src="${club.image}" alt="${club.name} Image" style="width:100%; height:20vh;">
+    <p><b>League: </b>${club.league}</p>
+    <p><b>City: </b>${club.city}</p>
+    <button onclick="viewClubPlayers('${club.name}'); event.stopPropagation();" style="width:100%;">View Players</button>
+    <p><b>Description: </b>${club.description}</p>
+</div>
+`;    
     // Set the club details HTML in the clubDetailsContainer
-    
+    clubDetailsContainer.innerHTML =focusedClubCard;
 }
 
 // Function to view club players
@@ -57,7 +74,8 @@ function viewClubPlayers(clubName) {
     // Find the selected club by its name
     const selectedClub = clubData.find(club => club.name === clubName);
     
-    // Write your code here for task3
+    // TODO: Write your code here for task3
+
     // Generate HTML for the list of players and display it
 
     // Iterate over selectedClub object's players property
@@ -70,7 +88,7 @@ function viewClubPlayers(clubName) {
 
 // Handle search input and filter clubs
 function handleSearchInput() {
-    // Write your code here for task4
+    // TODO: Write your code here for task4
 
     // Get the search term and convert it to lowercase for case-insensitive search
     
