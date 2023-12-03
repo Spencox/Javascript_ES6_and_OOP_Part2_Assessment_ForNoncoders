@@ -75,8 +75,32 @@ function displayClubDetails(club) {
 function viewClubPlayers(clubName) {
     // Find the selected club by its name
     const selectedClub = clubData.find(club => club.name === clubName);
-    
+    //console.log(selectedClub);
     // TODO: Write your code here for task3
+    const playersData = 
+`
+<div id="club-details">
+    <button onclick="window.location.reload();" style="width: 100%">Back</button>
+        <h2>${selectedClub.name} Players</h2>
+        <p><b>Name: </b>${selectedClub.players[0].name}</p>
+        <p><b>Position: </b>${selectedClub.players[0].position}</p>
+        <p><b>Goals: </b>${selectedClub.players[0].goals}</p>
+        <p><b>Assists: </b>${selectedClub.players[0].assists}</p>
+        <hr />
+        <p><b>Name: </b>${selectedClub.players[1].name}</p>
+        <p><b>Position: </b>${selectedClub.players[1].position}</p>
+        <p><b>Goals: </b>${selectedClub.players[1].goals}</p>
+        <p><b>Assists: </b>${selectedClub.players[1].assists}</p>
+        <hr />
+        <p><b>Name: </b>${selectedClub.players[2].name}</p>
+        <p><b>Position: </b>${selectedClub.players[2].position}</p>
+        <p><b>Goals: </b>${selectedClub.players[2].goals}</p>
+        <p><b>Assists: </b>${selectedClub.players[2].assists}</p>
+        <hr />
+</div>
+`;    
+    // Set the club details HTML in the clubDetailsContainer
+    clubDetailsContainer.innerHTML =playersData;
 
     // Generate HTML for the list of players and display it
 
@@ -93,11 +117,16 @@ function handleSearchInput() {
     // TODO: Write your code here for task4
 
     // Get the search term and convert it to lowercase for case-insensitive search
-    
+    const searchClub = searchInput.value.toLowerCase();
+
     // Create a string containing club details for searching
-    
+    const filteredClubs = clubData.filter(club => {
+        const clubDataString = `${club.name} ${club.league} ${club.city}`.toLowerCase();
     // Check if the search term is found in the club data string
-        
+        return clubDataString.includes(searchClub);
+    });
+    
     // Display the filtered clubs
+    displayClubs(filteredClubs);
     
 }
