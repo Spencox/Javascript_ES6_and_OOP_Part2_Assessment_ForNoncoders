@@ -3,6 +3,7 @@ const clubList = document.getElementById('club-list');
 const searchInput = document.getElementById('search');
 const clubDetailsContainer = document.getElementById('main');
 
+
 // Attach an input event listener for the search input
 searchInput.addEventListener('input', handleSearchInput);
 
@@ -55,13 +56,14 @@ function displayClubDetails(club) {
     // Create a club details HTML using template strings
     const focusedClubCard = 
 `
-<div id="club-details" onclick="handleClubClick(this);">
-    <button onclick="viewClubPlayers('${club.name}'); event.stopPropagation();" style="width:100%;">Back</button>
-    <h2>${club.name}</h2>
-    <img src="${club.image}" alt="${club.name} Image" style="width:100%; height:20vh;">
-    <p><b>League: </b>${club.league}</p>
-    <p><b>City: </b>${club.city}</p>
-    <button onclick="viewClubPlayers('${club.name}'); event.stopPropagation();" style="width:100%;">View Players</button>
+<div id="club-details">
+    <button onclick="window.location.reload();" style="width: 100%">Back</button>
+        <h2>${club.name}</h2>
+        <img src="${club.image}" alt="${club.name} Image" style="width:100%; height:20vh;">
+        <p><b>League: </b>${club.league}</p>
+        <p><b>City: </b>${club.city}</p>
+        <p><b>Stadium: </b>${club.stadium}</p>
+        <button onclick="viewClubPlayers('${club.name}'); event.stopPropagation();" style="width:100%;">View Players</button>
     <p><b>Description: </b>${club.description}</p>
 </div>
 `;    
