@@ -75,41 +75,41 @@ function displayClubDetails(club) {
 function viewClubPlayers(clubName) {
     // Find the selected club by its name
     const selectedClub = clubData.find(club => club.name === clubName);
-    //console.log(selectedClub);
     // TODO: Write your code here for task3
-    const playersData = 
+    
+    // Generate HTML for the list of players and display it
+    const clubDetailsHTML = 
 `
 <div id="club-details">
     <button onclick="window.location.reload();" style="width: 100%">Back</button>
-        <h2>${selectedClub.name} Players</h2>
-        <p><b>Name: </b>${selectedClub.players[0].name}</p>
-        <p><b>Position: </b>${selectedClub.players[0].position}</p>
-        <p><b>Goals: </b>${selectedClub.players[0].goals}</p>
-        <p><b>Assists: </b>${selectedClub.players[0].assists}</p>
-        <hr />
-        <p><b>Name: </b>${selectedClub.players[1].name}</p>
-        <p><b>Position: </b>${selectedClub.players[1].position}</p>
-        <p><b>Goals: </b>${selectedClub.players[1].goals}</p>
-        <p><b>Assists: </b>${selectedClub.players[1].assists}</p>
-        <hr />
-        <p><b>Name: </b>${selectedClub.players[2].name}</p>
-        <p><b>Position: </b>${selectedClub.players[2].position}</p>
-        <p><b>Goals: </b>${selectedClub.players[2].goals}</p>
-        <p><b>Assists: </b>${selectedClub.players[2].assists}</p>
-        <hr />
+    <h2>${selectedClub.name} Players</h2>
+    <ul id="players-list" style="list-style-type: none;"></ul>
 </div>
 `;    
-    // Set the club details HTML in the clubDetailsContainer
-    clubDetailsContainer.innerHTML =playersData;
+    clubDetailsContainer.innerHTML =clubDetailsHTML;
 
-    // Generate HTML for the list of players and display it
+    const playerDataListEl = document.getElementById('players-list');
 
-    // Iterate over selectedClub object's players property
-
-    // Create a string joining the information of all the players of the selected Club 
-
-    // Display the information by setting the HTML in the clubDetailsContainer
+    console.log(playerDataListEl);
     
+    // Iterate over selectedClub object's players property
+    selectedClub.players.forEach(player => {
+        // Create a string joining the information of all the players of the selected Club 
+        const playerListItem = document.createElement('li');
+        playerListItem.innerHTML = 
+`
+<li>
+    <p><b>Name: </b>${player.name}</p>
+    <p><b>Position: </b>${player.position}</p>
+    <p><b>Goals: </b>${player.goals}</p>
+    <p><b>Assists: </b>${player.assists}</p>
+</li>
+<hr />        
+`
+    // Display the information by setting the HTML in the clubDetailsContainer
+        const playerDataListEl = document.getElementById('players-list');
+        playerDataListEl.appendChild(playerListItem);
+    })       
 }
 
 // Handle search input and filter clubs
